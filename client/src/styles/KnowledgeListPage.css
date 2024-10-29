@@ -1,0 +1,99 @@
+.knowledge-list-page {
+  max-width: 1200px; /* ขยายขนาดของกล่อง */
+  margin: 60px auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+  font-family: 'Arial', sans-serif;
+}
+
+.knowledge-list-page h2 {
+  font-size: 36px;
+  color: #ff6600;
+  text-align: center;
+  margin-bottom: 50px;
+  font-weight: bold;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.knowledge-list-item {
+  background-color: #ffffff;
+  padding: 30px 40px; /* ขยาย padding ให้ใหญ่ขึ้น */
+  margin-bottom: 25px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid #e0e0e0;
+}
+
+.knowledge-list-item:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transform: translateY(-3px);
+}
+
+.knowledge-title {
+  font-size: 26px; /* ขยายขนาดฟอนต์ */
+  color: #333333;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s;
+  flex: 1;
+}
+
+.knowledge-title:hover {
+  color: #ff6600;
+}
+
+.knowledge-actions {
+  display: flex;
+  gap: 20px; /* ขยายระยะห่างระหว่างปุ่ม */
+}
+
+.knowledge-actions .edit, .knowledge-actions .delete {
+  padding: 14px 25px; /* ขยายขนาดปุ่ม */
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.knowledge-actions .edit {
+  background-color: #4caf50;
+  color: #ffffff;
+}
+
+.knowledge-actions .edit:hover {
+  background-color: #388e3c;
+  transform: scale(1.05);
+}
+
+.knowledge-actions .delete {
+  background-color: #f44336;
+  color: #ffffff;
+}
+
+.knowledge-actions .delete:hover {
+  background-color: #d32f2f;
+  transform: scale(1.05);
+}
+
+/* ทำให้ทั้ง Card คลิกได้ */
+.knowledge-list-item {
+  overflow: hidden;
+}
+
+.knowledge-list-item > * {
+  pointer-events: none;
+}
+
+.knowledge-list-item .knowledge-title,
+.knowledge-actions .edit,
+.knowledge-actions .delete {
+  pointer-events: auto;
+}

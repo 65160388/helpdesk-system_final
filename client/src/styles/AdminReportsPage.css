@@ -1,0 +1,134 @@
+/* โครงสร้างหลักของหน้า */
+.report-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9; /* เพิ่มสีพื้นหลัง */
+  font-family: 'Arial', sans-serif;
+}
+
+/* การจัดการส่วนของการ์ดสถิติ */
+.stats-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px; /* เพิ่มช่องว่างด้านล่าง */
+}
+
+.stat-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px; /* เพิ่มขอบมุมมน */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* เพิ่มเงา */
+  width: 23%;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s; /* เพิ่ม animation */
+}
+
+.stat-card:hover {
+  transform: scale(1.05); /* เพิ่มการขยายเมื่อ hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* เพิ่มเงาเมื่อ hover */
+}
+
+.stat-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.stat-card p {
+  font-size: 26px;
+  font-weight: bold;
+  color: #ff5722;
+  margin: 0;
+}
+
+/* การจัดการส่วนของรายงานผู้ใช้ */
+.user-reports {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.report-card {
+  background-color: #f3f3f3;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #ff5722;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s, box-shadow 0.2s; /* เพิ่ม animation */
+}
+
+.report-card:hover {
+  background-color: #ffe6e6; /* เปลี่ยนสีพื้นหลังเมื่อ hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* เพิ่มเงาเมื่อ hover */
+}
+
+.report-card h3 {
+  font-size: 20px;
+  margin: 0 0 10px;
+  color: #333;
+}
+
+.report-card p {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #555;
+}
+
+/* การจัดการส่วนหัวข้อ */
+.user-reports h2 {
+  color: #ff5722;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* สไตล์เมื่อไม่มีรายงาน */
+.no-reports {
+  text-align: center;
+  font-size: 18px;
+  color: #999;
+}
+
+/* สไตล์สำหรับปุ่มตอบกลับ */
+.reply-button {
+  padding: 10px 20px;
+  background-color: #ff5722; /* สีพื้นหลังของปุ่ม */
+  color: #fff; /* สีตัวอักษร */
+  border: none;
+  border-radius: 8px; /* ความโค้งของขอบปุ่ม */
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.2s; /* เพิ่มเอฟเฟกต์เมื่อ hover */
+  margin-top: 10px; /* เพิ่มช่องว่างด้านบน */
+}
+
+.reply-button:hover {
+  background-color: #e03d12; /* เปลี่ยนสีพื้นหลังเมื่อ hover */
+  transform: scale(1.05); /* ขยายเล็กน้อยเมื่อ hover */
+}
+
+.reply-button:active {
+  background-color: #c32f0a; /* เปลี่ยนสีเมื่อคลิก */
+  transform: scale(0.95); /* ย่อเล็กน้อยเมื่อคลิก */
+}
+
+
+/* ปรับการแสดงผลบนอุปกรณ์มือถือ */
+@media (max-width: 768px) {
+  .stats-container {
+    flex-direction: column;
+  }
+
+  .stat-card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .user-reports h2 {
+    font-size: 20px;
+  }
+}

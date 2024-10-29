@@ -1,0 +1,87 @@
+/* โครงสร้างหลักของหน้า EditKnowledgePage */
+.edit-knowledge-page {
+    max-width: 700px; /* กำหนดความกว้าง */
+    margin: 60px auto; /* จัดให้อยู่ตรงกลาง */
+    padding: 40px;
+    background-color: #ffffff; /* สีพื้นหลังขาว */
+    border-radius: 12px; /* ความโค้งของขอบ */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* แสงเงารอบกล่อง */
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.edit-knowledge-page h2 {
+    font-size: 36px;
+    color: #ff5722;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.edit-knowledge-page form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-knowledge-page label {
+    display: block;
+    text-align: left;
+    font-size: 18px; /* ขนาดตัวอักษรของ label */
+    color: #333333; /* สีตัวอักษรเข้ม */
+    margin-bottom: 8px; /* ระยะห่างด้านล่าง */
+    width: 100%; /* ให้ label กว้างเต็ม */
+}
+
+.edit-knowledge-page input[type="text"],
+.edit-knowledge-page textarea {
+    width: 100%;
+    padding: 16px; /* ขนาด padding */
+    font-size: 16px;
+    border: 2px solid #ddd; /* ขอบของ input และ textarea */
+    border-radius: 8px; /* ความโค้งของขอบ */
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    background-color: #f9f9f9; /* สีพื้นหลังของ input */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.edit-knowledge-page input[type="text"]:focus,
+.edit-knowledge-page textarea:focus {
+    border-color: #FF5722; /* สีขอบเมื่อถูก focus */
+    box-shadow: 0 0 8px rgba(255, 87, 34, 0.4); /* เงาที่เกิดขึ้นเมื่อ focus */
+    outline: none;
+}
+
+.edit-knowledge-page button[type="submit"] {
+    background-color: #FF5722; /* สีปุ่ม */
+    color: white; /* สีตัวอักษรในปุ่ม */
+    padding: 16px 32px; /* ขนาด padding */
+    font-size: 18px; /* ขนาดตัวอักษร */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.edit-knowledge-page button[type="submit"]:hover {
+    background-color: #e64a19; /* สีปุ่มเมื่อ hover */
+    box-shadow: 0 8px 20px rgba(230, 74, 25, 0.4); /* เงาที่เกิดขึ้นเมื่อ hover */
+}
+
+.edit-knowledge-page button[type="submit"]:active {
+    background-color: #d84315; /* สีปุ่มเมื่อคลิก */
+    transform: scale(0.98); /* ย่อเล็กน้อยเมื่อคลิก */
+}
+
+/* ปรับการแสดงผลบนอุปกรณ์มือถือ */
+@media (max-width: 768px) {
+    .edit-knowledge-page {
+        padding: 30px;
+        margin: 30px auto;
+    }
+  
+    .edit-knowledge-page h2 {
+        font-size: 28px; /* ลดขนาดตัวอักษรในหน้าจอเล็ก */
+    }
+}

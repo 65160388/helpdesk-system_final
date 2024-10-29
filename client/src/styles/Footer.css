@@ -1,0 +1,10 @@
+/* src/styles/Footer.css */
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+  margin-top: auto; /* ปรับให้ footer ติดด้านล่าง */
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1); /* เพิ่มเงาเล็กน้อยเพื่อแยกกับเนื้อหา */
+}

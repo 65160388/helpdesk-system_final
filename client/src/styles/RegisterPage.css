@@ -1,0 +1,118 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* เปลี่ยนจาก center เป็น flex-start */
+  padding: 10px 0; /* ลด padding บน-ล่างลง */
+  min-height: 100vh;
+  margin: 0;
+}
+
+.register-container {
+  background-color: #ffffff;
+  padding: 40px 30px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  width: 380px;
+  text-align: center;
+  margin: 20px auto; /* เพิ่มระยะห่างด้านบนล่างมากขึ้น */
+}
+
+.register-container h2 {
+  margin-bottom: 25px;
+  font-size: 26px;
+  color: #333;
+}
+
+.register-container label {
+  font-size: 14px;
+  color: #666;
+  display: block;
+  text-align: left;
+  margin-bottom: 6px;
+}
+
+.register-container input[type="text"],
+.register-container input[type="email"],
+.register-container input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.register-container input[type="text"]:focus,
+.register-container input[type="email"]:focus,
+.register-container input[type="password"]:focus {
+  border-color: #FF5722;
+  box-shadow: 0 0 5px rgba(255, 87, 34, 0.2);
+}
+
+.register-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #FF5722;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-container button:hover {
+  background-color: #e64a19;
+}
+
+.register-container p {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #999;
+}
+
+.register-container p a {
+  color: #FF5722;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.register-container p a:hover {
+  color: #E64A19;
+}
+
+.password-container {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.password-container input[type="password"] {
+  padding-right: 40px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #aaa;
+  font-size: 18px;
+}
+
+.error-message {
+  color: #d9534f;
+  background-color: #f9d6d5;
+  border: 1px solid #ebccd1;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  display: block;
+  text-align: left;
+}

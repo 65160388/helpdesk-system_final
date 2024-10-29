@@ -1,0 +1,99 @@
+.my-queue-page {
+    margin: 2rem auto;
+    max-width: 1200px;
+    padding: 2rem;
+    background-color: #FEFDFD;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.my-queue-page:hover {
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.my-queue-page h2 {
+    font-size: 36px;
+    color: #ff5722;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.my-queue-page ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* จัดให้มี 4 card ต่อแถว */
+    gap: 1rem; /* ลดขนาด gap เพื่อไม่ให้ card ห่างกันเกินไป */
+    list-style-type: none;
+    padding: 0;
+}
+
+.my-queue-page ul li {
+    padding: 1.7rem; /* ลด padding ของ card ลง */
+    background-color: #FEFDFD;
+    border-radius: 20px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1); /* ปรับขนาด shadow ให้สมดุล */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left: 8px solid #ff5722;
+    text-align: center;
+}
+
+.my-queue-page ul li:hover {
+    background-color: #FEFDFD;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.my-queue-page ul li strong {
+    color: #ff5722;
+    font-size: 25px; /* ลดขนาดตัวอักษรลงเล็กน้อย */
+    font-weight: bold;
+}
+
+.my-queue-page ul li span {
+    font-size: 18px; /* ลดขนาดลงเล็กน้อยเพื่อสมดุลกับ card */
+    color: #333;
+}
+
+.card-info {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+}
+
+/* จัดการเมื่อหน้าจอเล็ก */
+@media (max-width: 1024px) {
+    .my-queue-page ul {
+      grid-template-columns: repeat(2, 1fr); /* แสดง 2 card ต่อแถว เมื่อหน้าจอแคบลง */
+    }
+}
+
+@media (max-width: 768px) {
+    .my-queue-page {
+      padding: 1.5rem;
+    }
+
+    .my-queue-page h2 {
+      font-size: 28px;
+    }
+
+    .my-queue-page ul {
+      grid-template-columns: 1fr; /* แสดง 1 card ต่อแถว เมื่อหน้าจอแคบลง */
+    }
+
+    .my-queue-page ul li {
+      padding: 1.5rem;
+    }
+
+    .my-queue-page ul li strong {
+      font-size: 18px;
+    }
+
+    .my-queue-page ul li span {
+      font-size: 16px;
+    }  
+}

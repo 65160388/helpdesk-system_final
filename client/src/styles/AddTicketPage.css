@@ -1,0 +1,123 @@
+.add-ticket-page {
+    max-width: 700px; /* กำหนดความกว้าง */
+    margin: 60px auto; /* จัดให้อยู่ตรงกลาง */
+    padding: 40px;
+    background-color: #ffffff; /* สีพื้นหลังขาว */
+    border-radius: 12px; /* ความโค้งของขอบ */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* แสงเงารอบกล่อง */
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.add-ticket-page h2 {
+    font-size: 36px;
+    color: #ff5722;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.ticket-form {
+    margin-bottom: 40px; /* ระยะห่างด้านล่างของฟอร์ม */
+}
+
+.ticket-form label {
+    display: block;
+    text-align: left;
+    font-size: 18px; /* ขนาดตัวอักษรของ label */
+    color: #333333; /* สีตัวอักษรเข้ม */
+    margin-bottom: 8px; /* ระยะห่างด้านล่าง */
+}
+
+.ticket-form select,
+.ticket-form textarea,
+.ticket-form input[type="text"] {
+    width: 100%;
+    padding: 16px; /* ขนาด padding */
+    font-size: 16px;
+    border: 2px solid #ddd; /* ขอบของ input และ textarea */
+    border-radius: 8px; /* ความโค้งของขอบ */
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    background-color: #f9f9f9; /* สีพื้นหลังของ input */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ticket-form select:focus,
+.ticket-form textarea:focus,
+.ticket-form input[type="text"]:focus {
+    border-color: #FF5722; /* สีขอบเมื่อถูก focus */
+    box-shadow: 0 0 8px rgba(255, 87, 34, 0.4); /* เงาที่เกิดขึ้นเมื่อ focus */
+    outline: none;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* ช่องว่างระหว่างปุ่ม */
+}
+
+.button-group .add-issue-button,
+.button-group .submit-all-button {
+    background-color: #FF5722; /* สีปุ่ม */
+    color: white; /* สีตัวอักษรในปุ่ม */
+    padding: 16px 32px; /* ขนาด padding */
+    font-size: 18px; /* ขนาดตัวอักษร */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    width: 200px; /* กำหนดความกว้างของปุ่มให้เท่ากัน */
+}
+
+.button-group .add-issue-button:hover,
+.button-group .submit-all-button:hover {
+    background-color: #e64a19; /* สีปุ่มเมื่อ hover */
+    box-shadow: 0 8px 20px rgba(230, 74, 25, 0.4); /* เงาที่เกิดขึ้นเมื่อ hover */
+}
+
+.issue-list {
+    margin-top: 40px;
+    text-align: left;
+}
+
+.issue-list h3 {
+    font-size: 24px;
+    color: #FF5722;
+    margin-bottom: 20px;
+}
+
+.issue-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.issue-list .issue-item {
+    padding: 16px;
+    background-color: #f9f9f9;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.issue-list .issue-item strong {
+    color: #FF5722;
+}
+
+.delete-button {
+    background-color: #e64a19;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #d84315;
+    box-shadow: 0 4px 10px rgba(216, 67, 21, 0.4);
+}
