@@ -33,8 +33,8 @@ function Navbar({ user, handleLogout }) {
           </li>
         ) : (
           <>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/register">Register</Link></li>
+            <li><Link to="/login">เข้าสู่ระบบ</Link></li>
+            <li><Link to="/register">สมัครสมาชิก</Link></li>
           </>
         )}
       </ul>
@@ -43,3 +43,5 @@ function Navbar({ user, handleLogout }) {
 }
 
 export default Navbar;
+
+

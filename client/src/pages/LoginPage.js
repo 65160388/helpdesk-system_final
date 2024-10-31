@@ -40,7 +40,7 @@ function LoginPage() {
         } else if (userRole === 'staff') {
           navigate('/staff');
         } else {
-          navigate('/Index');
+          navigate('/index');
         }
       }
     } catch (error) {
