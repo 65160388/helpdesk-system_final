@@ -1,4 +1,3 @@
-// controllers/knowledgeController.js
 const knowledgeModel = require('../models/knowledgeModel');
 
 exports.createKnowledge = async (req, res, next) => {

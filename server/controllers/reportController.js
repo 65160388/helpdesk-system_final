@@ -1,6 +1,5 @@
 const reportModel = require('../models/reportModel');
 
-// server/controllers/reportController.js
 exports.getStats = async (req, res) => {
     try {
         const ticketsToday = await reportModel.getTicketsToday();

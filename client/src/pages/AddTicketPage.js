@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ticketService from '../services/ticketService';
-import jwtDecode from 'jwt-decode'; // ใช้ jwt-decode เพื่อถอดข้อมูลจาก token
+import jwtDecode from 'jwt-decode'; 
 import '../styles/AddTicketPage.css';
 
 const AddTicketPage = () => {
@@ -12,7 +12,7 @@ const AddTicketPage = () => {
 
   // ฟังก์ชันสำหรับดึงชื่อผู้ใช้จาก token
   useEffect(() => {
-    const token = localStorage.getItem('token'); // สมมติว่า token ถูกเก็บใน localStorage
+    const token = localStorage.getItem('token'); // token ถูกเก็บใน localStorage
     if (token) {
       const decodedToken = jwtDecode(token);
       const fullName = `${decodedToken.first_name} ${decodedToken.last_name}`;

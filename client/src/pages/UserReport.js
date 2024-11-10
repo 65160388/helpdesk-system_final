@@ -35,19 +35,19 @@ const UserReport = () => {
     return (
         <div>
             <form className="user-report-form" onSubmit={handleSubmit}>
-            <h2>ส่งรายงาน</h2>
+            <h2>รายงานติดต่อแอดมิน</h2>
                 <input
                     type="text"
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
-                    placeholder="หัวข้อรายงาน"
+                    placeholder="หัวข้อรายงานกับแอดมิน"
                     required
                     disabled={loading}
                 />
                 <textarea
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder="ข้อความแจ้งปัญหา"
+                    placeholder="ข้อความ"
                     required
                     disabled={loading}
                 ></textarea>

@@ -21,19 +21,4 @@ exports.getQueueByUserId = async (userId) => {
       throw new Error('เกิดข้อผิดพลาดในการดึงข้อมูลคิวของผู้ใช้');
     }
 };
-  
-
-// ฟังก์ชันสำหรับสร้าง Queue ใหม่
-// exports.createQueue = async (user_id, name, description) => {
-//   try {
-//     const [result] = await pool.execute(
-//       'INSERT INTO queues (user_id, name, description) VALUES (?, ?, ?)',
-//       [user_id, name, description]
-//     );
-//     return result.insertId; // ส่งคืน queue_id ที่สร้างใหม่
-//   } catch (error) {
-//     console.error('Error creating queue:', error.message);
-//     throw new Error('Error creating queue: ' + error.message);
-//   }
-// };
 

@@ -1,4 +1,3 @@
-// server/models/reportModel.js
 const db = require('../config/db');
 
 exports.getTicketsToday = async () => {

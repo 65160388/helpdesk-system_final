@@ -54,4 +54,3 @@ exports.createQueue = async (req, res) => {
       res.status(500).json({ message: 'เกิดข้อผิดพลาดในการสร้าง Queue' });
     }
   };
-  

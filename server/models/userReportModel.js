@@ -1,4 +1,3 @@
-// userReportModel.js
 const db = require('../config/db');
 
 const userReportModel = {

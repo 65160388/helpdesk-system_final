@@ -1,4 +1,3 @@
-// models/knowledgeModel.js
 const pool = require('../config/db'); // ตรวจสอบให้แน่ใจว่าได้ตั้งค่าเชื่อมต่อ DB ใน config/db.js แล้ว
 
 exports.createKnowledge = async ({ title, content }) => {

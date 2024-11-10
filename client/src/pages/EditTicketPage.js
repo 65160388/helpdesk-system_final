@@ -116,7 +116,7 @@ const EditTicketPage = () => {
             <option value="">เลือกพนักงาน</option>
             {staffList.map((staff) => (
               <option key={staff.id} value={staff.id}>
-                {staff.id} - {staff.name} ({staff.email}) {/* ตรวจสอบว่าใช้ชื่อฟิลด์ถูกต้อง */}
+                {staff.id} - {staff.name} ({staff.email})
               </option>
             ))}
           </select>

@@ -1,4 +1,3 @@
-// routes/knowledge.js
 const express = require('express');
 const router = express.Router();
 const knowledgeController = require('../controllers/knowledgeController');

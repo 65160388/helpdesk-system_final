@@ -1,4 +1,3 @@
-// controllers/ticketController.js
 const ticketModel = require('../models/ticketModel');
 
 // ฟังก์ชันสำหรับสร้างตั๋วใหม่

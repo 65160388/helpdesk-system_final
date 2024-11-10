@@ -6,7 +6,7 @@ import '../styles/HomePage.css';
 function HomePage() {
   return (
     <>
-      <Navbar />  {/* แสดง Navbar */}
+      <Navbar />
 
       <div className="home">
         <section className="hero">
@@ -31,7 +31,7 @@ function HomePage() {
         </section>
       </div>
 
-      <Footer />  {/* แสดง Footer */}
+      <Footer />
     </>
   );
 }

@@ -1,4 +1,3 @@
-// userReportController.js
 const nodemailer = require('nodemailer');
 const userReportModel = require('../models/userReportModel');
 const db = require('../config/db');

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import reportService from '../services/reportService'; // บริการ backend สำหรับจัดการรายงาน
+import reportService from '../services/reportService';
 import '../styles/AdminReportsPage.css';
 
 const AdminReportsPage = () => {

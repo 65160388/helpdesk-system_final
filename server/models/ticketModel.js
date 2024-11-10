@@ -1,4 +1,3 @@
-// models/ticketModel.js
 const pool = require('../config/db');
 
 // ฟังก์ชันสำหรับสร้าง Queue ใหม่
@@ -154,3 +153,4 @@ exports.assignStaffToTicket = async (staff_id, ticket_id) => {
     throw new Error('Error assigning staff to ticket: ' + error.message);
   }
 };
+
