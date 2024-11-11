@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Navbar.css'; // สไตล์สำหรับ Navbar
+import '../styles/Navbar.css';
 
 function Navbar({ user, handleLogout }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
