@@ -1,10 +1,25 @@
-/* โครงสร้างหลักของหน้า */
 .report-page {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f9f9f9; /* เพิ่มสีพื้นหลัง */
+  background-color: #f9f9f9;
   font-family: 'Arial', sans-serif;
+}
+
+.report-page h1 {
+  font-size: 36px;
+  color: #ff5722;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.report-page h2 {
+  font-size: 36px;
+  color: #ff5722;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
 }
 
 /* การจัดการส่วนของการ์ดสถิติ */
