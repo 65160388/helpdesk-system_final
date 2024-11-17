@@ -38,11 +38,14 @@ exports.verifyToken = (req, res, next) => {
 // authorizeRoles
 exports.authorizeRoles = (...roles) => {
   return (req, res, next) => {
-    // ตรวจสอบบทบาทของผู้ใช้
-    if (!roles.includes(req.user.role)) {
-      console.log('Unauthorized role access:', req.user.role);  // แสดงบทบาทที่ไม่ตรงกับที่ต้องการ
+    const userRole = req.user.role.toLowerCase(); // ปรับ role เป็นตัวพิมพ์เล็ก
+    console.log('User Role:', userRole);
+    console.log('Authorized Roles:', roles);
+    const normalizedRoles = roles.map(role => role.toLowerCase()); // แปลง roles เป็นตัวพิมพ์เล็กทั้งหมด
+    if (!normalizedRoles.includes(userRole)) {
+      console.log('Unauthorized role access:', req.user.role);
       return res.status(403).json({ message: 'ไม่มีสิทธิ์เข้าถึง' });
     }
-    next(); // ให้ไปยัง middleware หรือ controller ถัดไป
+    next();
   };
 };

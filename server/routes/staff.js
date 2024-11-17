@@ -20,7 +20,7 @@ router.post(
 );
 
 // ดึงรายการพนักงานทั้งหมด
-router.get('/', verifyToken, authorizeRoles('admin'), staffController.getAllStaff);
+router.get('/', verifyToken, authorizeRoles('admin', 'staff'), staffController.getAllStaff);
 
 // เพิ่มฟังก์ชันสำหรับมอบหมาย Queue ให้กับพนักงาน endpoint
 router.post('/assignQueue', verifyToken, authorizeRoles('admin'), staffController.assignQueueToStaff);

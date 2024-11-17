@@ -24,17 +24,6 @@ const createQueue = async (queueData) => {
   }
 };
 
-// ฟังก์ชันสำหรับการสร้าง Tickets หลายรายการ
-// const createTickets = async (data) => {
-//   try {
-//     const response = await axios.post(`${API_URL}/tickets/create-multiple`, data, getAuthHeaders());
-//     return response.data;
-//   } catch (error) {
-//     console.log('Error in createTickets:', error.response ? error.response.data : error.message); // ตรวจสอบ error
-//     throw error;
-//   }
-// };
-
 // ฟังก์ชันสำหรับการสร้าง Ticket เดี่ยว (ถ้ายังต้องการใช้งาน)
 const createTicket = async (ticketData) => {
   try {
@@ -101,16 +90,27 @@ const getUserTickets = async () => {
   }
 };
 
+// ฟังก์ชันสำหรับการดึงข้อมูลคิวทั้งหมด
+const getQueueList = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/list`, getAuthHeaders());
+    return response.data;
+  } catch (error) {
+    console.error('Error in getQueueList:', error.response ? error.response.data : error.message);
+    throw error;
+  }
+};
+
 // รวบรวมทุกฟังก์ชันในรูปแบบ object
 const ticketService = {
   createQueue,
-  // createTickets,
   createTicket,
   getAllTickets,
   getTicketById,
   updateTicket,
   deleteTicket,
   getUserTickets,
+  getQueueList,
 };
 
 export default ticketService;

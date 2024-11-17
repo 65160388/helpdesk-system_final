@@ -48,11 +48,11 @@ const StaffIndexPage = () => {
       <div className="content">
         <nav>
           <ul className="menu">
-            <li>
+            {/* <li>
               <button className="menu-button" onClick={() => navigate('/staff/dashboard')}>
                 <i className="fas fa-chart-line"></i> Dashboard
               </button>
-            </li>
+            </li> */}
             <li>
               <button className="menu-button" onClick={() => navigate('/tickets')}>
                 <i className="fas fa-ticket-alt"></i> จัดการ Tickets
@@ -66,6 +66,11 @@ const StaffIndexPage = () => {
             <li>
               <button className="menu-button" onClick={() => navigate('/knowledge')}>
                 <i className="fas fa-book"></i> จัดการฐานความรู้ (Knowledge Base)
+              </button>
+            </li>
+            <li>
+              <button className="menu-button" onClick={() => navigate('/queues/list')}>
+                <i className="fas fa-list"></i> ดู Queue
               </button>
             </li>
             {/* เฉพาะ admin เท่านั้นที่เห็นเมนูนี้ */}
@@ -90,13 +95,13 @@ const StaffIndexPage = () => {
                         <i className="fas fa-plus-circle"></i> เพิ่ม Knowledge Base
                       </button>
                     </li>
-                    <li>
+                    {/* <li>
                       <button className="menu-button" onClick={() => navigate('/tickets/edit')}>
                         <i className="fas fa-edit"></i> แก้ไข Ticket
                       </button>
-                    </li>
+                    </li> */}
                     <li>
-                      <button className="menu-button" onClick={() => navigate('/queue/list')}>
+                      <button className="menu-button" onClick={() => navigate('/queues/list')}>
                         <i className="fas fa-list"></i> ดู Queue
                       </button>
                     </li>

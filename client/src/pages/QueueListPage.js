@@ -1,50 +1,61 @@
 import React, { useEffect, useState } from 'react';
 import ticketService from '../services/ticketService';
+import '../styles/QueueListPage.css';
 
 const QueueListPage = () => {
-  const [queueList, setQueueList] = useState([]);
-  const [filteredQueueList, setFilteredQueueList] = useState([]);
+  const [ticketList, setTicketList] = useState([]);
+  const [filteredTicketList, setFilteredTicketList] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [statusFilter, setStatusFilter] = useState(''); // สำหรับกรองตามสถานะ
+  const [statusFilter, setStatusFilter] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchQueueList = async () => {
+    const fetchTicketList = async () => {
       try {
-        const data = await ticketService.getQueue();
-        setQueueList(data);
-        setFilteredQueueList(data);
+        const data = await ticketService.getAllTickets();
+        setTicketList(data);
+        setFilteredTicketList(data);
       } catch (error) {
-        alert('เกิดข้อผิดพลาดในการดึงข้อมูลคิว');
+        setError(error.message);
+      } finally {
+        setLoading(false);
       }
     };
-    fetchQueueList();
+    fetchTicketList();
   }, []);
 
-  // ฟังก์ชันกรองตามสถานะ
   const handleStatusFilterChange = (e) => {
-    setStatusFilter(e.target.value);
-    if (e.target.value === '') {
-      setFilteredQueueList(queueList);
-    } else {
-      const filteredList = queueList.filter((ticket) => ticket.status === e.target.value);
-      setFilteredQueueList(filteredList);
-    }
+    const selectedStatus = e.target.value;
+    setStatusFilter(selectedStatus);
+    filterTickets(searchTerm, selectedStatus);
   };
 
-  // ฟังก์ชันค้นหาตามหัวข้อ
   const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-    const filteredList = queueList.filter((ticket) =>
-      ticket.subject.toLowerCase().includes(e.target.value.toLowerCase())
-    );
-    setFilteredQueueList(filteredList);
+    const term = e.target.value;
+    setSearchTerm(term);
+    filterTickets(term, statusFilter);
   };
+
+  const filterTickets = (term, status) => {
+    let filteredList = ticketList;
+    if (term) {
+      filteredList = filteredList.filter((ticket) =>
+        ticket.subject?.toLowerCase().includes(term.toLowerCase())
+      );
+    }
+    if (status) {
+      filteredList = filteredList.filter((ticket) => ticket.status === status);
+    }
+    setFilteredTicketList(filteredList);
+  };
+
+  if (loading) return <p>กำลังโหลดข้อมูล...</p>;
+  if (error) return <p>เกิดข้อผิดพลาด: {error}</p>;
 
   return (
-    <div className="queue-list-page">
-      <h2>รายการคิว Ticket</h2>
-      
-      {/* ส่วนกรองสถานะ */}
+    <div className="ticket-list-page-container">
+      <h2>รายการ Queue ทั้งหมด</h2>
       <div className="filter-container">
         <label>กรองตามสถานะ:</label>
         <select value={statusFilter} onChange={handleStatusFilterChange}>
@@ -59,23 +70,26 @@ const QueueListPage = () => {
           <option value="Escalated">Escalated</option>
         </select>
       </div>
-      
-      {/* ส่วนค้นหาหัวข้อ */}
       <div className="search-container">
-        <label>ค้นหาหัวข้อ:</label>
+        <label>ค้นหาเลขคิว:</label>
         <input
           type="text"
           value={searchTerm}
           onChange={handleSearchChange}
-          placeholder="ค้นหาตามหัวข้อ..."
+          placeholder="ค้นหาตามเลขคิว..."
         />
       </div>
-
-      {/* แสดงรายการคิว */}
-      <ul>
-        {filteredQueueList.map((ticket) => (
-          <li key={ticket.id}>
-            {ticket.subject} - สถานะ: {ticket.status}
+      <ul className="ticket-list-grid">
+        {filteredTicketList.map((ticket) => (
+          <li key={ticket.id} className="ticket-item">
+            <h3>{ticket.subject}</h3>
+            <p><strong>รายละเอียด:</strong> {ticket.description}</p>
+            <p className={`status ${ticket.status?.replace(/\s+/g, '-')}`}>
+              สถานะ: {ticket.status || 'ไม่มีสถานะ'}
+            </p>
+            {/* <p><strong>เจ้าของคิว:</strong> {ticket.name || 'ไม่ทราบ'}</p> */}
+            <p><strong>เลขคิว:</strong> {ticket.queue_id || 'ไม่มีเลขคิว'}</p>
+            <p><strong>วันที่สร้าง:</strong> {new Date(ticket.created_at).toLocaleString()}</p>
           </li>
         ))}
       </ul>

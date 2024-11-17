@@ -1,63 +1,65 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ticketService from '../services/ticketService';
-import staffService from '../services/staffService'; // เพิ่ม import สำหรับ staff
+import staffService from '../services/staffService';
 import '../styles/EditTicketPage.css';
 
 const EditTicketPage = () => {
   const { id } = useParams();
   const [formData, setFormData] = useState({ subject: '', description: '', status: '', staff_id: '', queue_id: '' });
-  const [staffList, setStaffList] = useState([]); // สถานะสำหรับเก็บรายชื่อพนักงาน
+  const [staffList, setStaffList] = useState([]);
 
   useEffect(() => {
-    const fetchTicket = async () => {
+    const fetchData = async () => {
       try {
-        const data = await ticketService.getTicketById(id);
-        setFormData({ 
-          subject: data.subject, 
-          description: data.description, 
-          status: data.status, 
-          staff_id: data.staff_id || '', // เก็บ staff_id ของ ticket
-          queue_id: data.queue_id || '' // เพิ่ม queue_id ของ ticket
-        });
-      } catch (error) {
-        alert('เกิดข้อผิดพลาดในการดึงข้อมูล Ticket');
-      }
-    };
+        // ดึงข้อมูล Ticket
+        const ticketData = await ticketService.getTicketById(id);
+        console.log('Ticket Data:', ticketData);
 
-    const fetchStaffList = async () => {
-      try {
+        // ดึงข้อมูล Staff
         const staffData = await staffService.getAllStaff();
+        console.log('Staff List:', staffData);
+
+        // ตรวจสอบว่า user_id ใน ticket ตรงกับ staff_id ใน staffList
+        const matchedStaff = staffData.find((staff) => staff.id === ticketData.user_id) || {};
+
+        // อัปเดต State
+        setFormData({
+          subject: ticketData.subject,
+          description: ticketData.description,
+          status: ticketData.status,
+          staff_id: matchedStaff.id || '', // ใช้ id ของพนักงาน ถ้าไม่มีให้ใช้ค่าว่าง
+          queue_id: ticketData.queue_id || ''
+        });
         setStaffList(staffData);
       } catch (error) {
-        alert('เกิดข้อผิดพลาดในการดึงข้อมูลพนักงาน');
+        console.error('Error fetching data:', error);
+        alert('เกิดข้อผิดพลาดในการดึงข้อมูล');
       }
     };
 
-    fetchTicket();
-    fetchStaffList(); // ดึงข้อมูลรายชื่อพนักงาน
+    fetchData();
   }, [id]);
 
+  // อัปเดตค่าใน Form
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // ส่งข้อมูลการแก้ไข
   const handleEditTicket = async (e) => {
     e.preventDefault();
     try {
-      // อัปเดต ticket พร้อมข้อมูล queue_id และ staff_id
       await ticketService.updateTicket(id, formData);
-      
-      // มอบหมาย queue_id ให้กับ staff ใน backend
       await staffService.assignQueueToStaff({ staffId: formData.staff_id, queueId: formData.queue_id });
-
-      alert('แก้ไข Ticket สำเร็จ');
+      alert('บันทึกการแก้ไขสำเร็จ');
     } catch (error) {
-      alert('เกิดข้อผิดพลาดในการแก้ไข Ticket');
+      console.error('Error updating ticket:', error);
+      alert('เกิดข้อผิดพลาดในการบันทึกการแก้ไข');
     }
   };
 
-  // ตัวเลือกสถานะทั้งหมด
+  // ตัวเลือกสถานะที่รองรับ
   const statusOptions = [
     'New',
     'Assigned',
@@ -79,8 +81,8 @@ const EditTicketPage = () => {
             type="text"
             name="subject"
             value={formData.subject}
-            onChange={handleChange}
-            required
+            readOnly
+            className="readonly-input"
           />
         </label>
         <label>
@@ -88,8 +90,8 @@ const EditTicketPage = () => {
           <textarea
             name="description"
             value={formData.description}
-            onChange={handleChange}
-            required
+            readOnly
+            className="readonly-input"
           />
         </label>
         <label>
@@ -110,13 +112,13 @@ const EditTicketPage = () => {
           มอบหมายให้พนักงาน:
           <select
             name="staff_id"
-            value={formData.staff_id}
+            value={formData.staff_id} // ค่าที่เลือกจะตรงกับ staff_id
             onChange={handleChange}
           >
             <option value="">เลือกพนักงาน</option>
             {staffList.map((staff) => (
               <option key={staff.id} value={staff.id}>
-                {staff.id} - {staff.name} ({staff.email})
+                {staff.id} - {staff.first_name} {staff.last_name} ({staff.email})
               </option>
             ))}
           </select>
@@ -127,8 +129,8 @@ const EditTicketPage = () => {
             type="text"
             name="queue_id"
             value={formData.queue_id}
-            onChange={handleChange}
-            required
+            readOnly
+            className="readonly-input"
           />
         </label>
         <button type="submit">บันทึกการแก้ไข</button>
