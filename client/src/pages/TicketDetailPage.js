@@ -20,8 +20,8 @@ const TicketDetailPage = () => {
     fetchTicketDetails();
   }, [ticketId]);
 
-// ฟังก์ชันกำหนดสีของสถานะตามประเภทของมัน
-const getStatusColor = (status) => {
+  // ฟังก์ชันกำหนดสีของสถานะตามประเภทของมัน
+  const getStatusColor = (status) => {
     switch (status) {
       case 'New':
         return '#00bcd4'; // สีฟ้าสำหรับ New (สดใหม่)
@@ -39,6 +39,8 @@ const getStatusColor = (status) => {
         return '#f44336'; // สีแดงสำหรับ Reopened (เปิดใหม่เพราะยังแก้ไม่สมบูรณ์)
       case 'Escalated':
         return '#9c27b0'; // สีม่วงสำหรับ Escalated (ต้องการการดูแลจากระดับสูงกว่า)
+      case 'Rejected':
+        return '#ff5722'; //สีแดงส้ม Rejected (แสดงถึงตั๋วที่ถูกปฏิเสธ เช่น คำขอหรือปัญหาที่ไม่ตรงเงื่อนไข)
       default:
         return '#607d8b'; // สีเทาเข้มสำหรับสถานะอื่นๆ
     }

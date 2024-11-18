@@ -116,6 +116,7 @@
 .ticket-list-page-container .ticket-item .status.Closed { background-color: #9e9e9e; }
 .ticket-list-page-container .ticket-item .status.Reopened { background-color: #f44336; }
 .ticket-list-page-container .ticket-item .status.Escalated { background-color: #9c27b0; }
+.ticket-list-page-container .ticket-item .status.Rejected { background-color: #ff5722; }
 
 /* Responsive Design */
 @media (max-width: 768px) {

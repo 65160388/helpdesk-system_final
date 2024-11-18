@@ -13,6 +13,7 @@ const TicketsPage = () => {
     const fetchTickets = async () => {
       try {
         const data = await ticketService.getAllTickets();
+        console.log('Tickets:', data); // ตรวจสอบข้อมูล Tickets
         setTickets(data);
         setSortedTickets(data);
       } catch (error) {
@@ -67,26 +68,29 @@ const TicketsPage = () => {
     navigate(`/tickets/edit/${ticketId}`);
   };
 
+  // ฟังก์ชันกำหนดสีของสถานะตามประเภทของมัน
   const getStatusColor = (status) => {
     switch (status) {
       case 'New':
-        return '#00bcd4';
+        return '#00bcd4'; // สีฟ้าสำหรับ New (สดใหม่)
       case 'Assigned':
-        return '#ffc107';
+        return '#ffc107'; // สีเหลืองสำหรับ Assigned (กำลังจะเริ่ม)
       case 'In Progress':
-        return '#2196f3';
+        return '#2196f3'; // สีน้ำเงินสำหรับ In Progress (กำลังดำเนินการ)
       case 'Pending':
-        return '#ff9800';
+        return '#ff9800'; // สีส้มสำหรับ Pending (รอดำเนินการ)
       case 'Resolved':
-        return '#4caf50';
+        return '#4caf50'; // สีเขียวสำหรับ Resolved (แก้ไขแล้ว)
       case 'Closed':
-        return '#9e9e9e';
+        return '#9e9e9e'; // สีเทาสำหรับ Closed (ปิดแล้ว)
       case 'Reopened':
-        return '#f44336';
+        return '#f44336'; // สีแดงสำหรับ Reopened (เปิดใหม่เพราะยังแก้ไม่สมบูรณ์)
       case 'Escalated':
-        return '#9c27b0';
+        return '#9c27b0'; // สีม่วงสำหรับ Escalated (ต้องการการดูแลจากระดับสูงกว่า)
+      case 'Rejected':
+        return '#ff5722'; //สีแดงส้ม Rejected (แสดงถึงตั๋วที่ถูกปฏิเสธ เช่น คำขอหรือปัญหาที่ไม่ตรงเงื่อนไข)
       default:
-        return '#607d8b';
+        return '#607d8b'; // สีเทาเข้มสำหรับสถานะอื่นๆ
     }
   };
 
@@ -118,7 +122,7 @@ const TicketsPage = () => {
               className="edit-button"
               onClick={() => handleEditClick(ticket.id)}
             >
-              แก้ไข
+              ดูรายละเอียด
             </button>
           </li>
         ))}

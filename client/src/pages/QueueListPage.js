@@ -68,6 +68,7 @@ const QueueListPage = () => {
           <option value="Closed">Closed</option>
           <option value="Reopened">Reopened</option>
           <option value="Escalated">Escalated</option>
+          <option value="Rejected">Rejected</option>
         </select>
       </div>
       <div className="search-container">

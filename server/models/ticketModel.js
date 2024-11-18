@@ -80,18 +80,26 @@ exports.getTicketById = async (id) => {
   }
 };
 
-// ฟังก์ชันสำหรับอัปเดตตั๋ว
+// ฟังก์ชันสำหรับอัปเดตตั๋วในฐานข้อมูล
 exports.updateTicket = async (id, ticketData) => {
   const { subject, description, status } = ticketData;
+
   try {
     const [result] = await pool.execute(
-      'UPDATE tickets SET subject = ?, description = ?, status = ? WHERE id = ?',
+      `UPDATE tickets 
+       SET 
+         subject = IFNULL(?, subject), 
+         description = IFNULL(?, description), 
+         status = IFNULL(?, status) 
+       WHERE id = ?`,
       [subject, description, status, id]
     );
+
     console.log('Ticket update result:', result);
     if (result.affectedRows === 0) {
       throw new Error('No rows were updated.');
     }
+
     return result;
   } catch (error) {
     console.error('Error updating ticket:', error.message);

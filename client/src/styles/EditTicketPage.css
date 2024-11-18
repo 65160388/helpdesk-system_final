@@ -1,4 +1,3 @@
-/* โครงสร้างหลักของหน้า EditTicketPage */
 .edit-ticket-page {
     max-width: 700px; /* กำหนดความกว้าง */
     margin: 60px auto; /* จัดให้อยู่ตรงกลาง */
@@ -55,6 +54,7 @@
     outline: none;
 }
 
+/* ปุ่ม "บันทึกการแก้ไข" หรือ "มอบหมายงาน" */
 .edit-ticket-page button[type="submit"] {
     background-color: #FF5722; /* สีปุ่ม */
     color: white; /* สีตัวอักษรในปุ่ม */
@@ -76,7 +76,56 @@
     transform: scale(0.98); /* ย่อเล็กน้อยเมื่อคลิก */
 }
 
-/* ปรับการแสดงผลบนอุปกรณ์มือถือ */
+/* ปุ่ม "เปลี่ยนสถานะถัดไป" */
+.edit-ticket-page .button-group button {
+    padding: 12px 24px;
+    margin: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+/* ปุ่มเปลี่ยนสถานะถัดไป (สีเขียว) */
+.edit-ticket-page .button-group button {
+    background-color: #4caf50;
+    color: white; /* สีตัวอักษร */
+}
+
+.edit-ticket-page .button-group button:hover {
+    background-color: #45a049;
+    box-shadow: 0 8px 20px rgba(72, 180, 97, 0.4);
+}
+
+.edit-ticket-page .button-group button:active {
+    background-color: #3e8e41;
+    transform: scale(0.98); /* ลดขนาดเล็กน้อยเมื่อกด */
+}
+
+.edit-ticket-page .button-group button.reject-button {
+    background-color: #ff3c00; 
+    color: white; 
+}
+
+.edit-ticket-page .button-group button.reject-button:hover {
+    background-color: #e64a19;
+    box-shadow: 0 8px 20px rgba(230, 74, 25, 0.4);
+}
+
+.edit-ticket-page .button-group button.reject-button:active {
+    background-color: #d84315;
+    transform: scale(0.98); /* ลดขนาดเล็กน้อยเมื่อกด */
+}
+
+.edit-ticket-page .button-group button:disabled {
+    background-color: #e0e0e0;
+    color: #9e9e9e;
+    cursor: not-allowed; /* ไม่อนุญาตให้กด */
+    box-shadow: none;
+}
+
 @media (max-width: 768px) {
     .edit-ticket-page {
         padding: 30px;
